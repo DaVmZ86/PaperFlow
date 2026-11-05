@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="1280" height="440" role="img" aria-label="PaperFlow — Del DOI al PDF, sin fricción">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111c1b"/>
+      <stop offset="1" stop-color="#0a100f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="18%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#14b8a6" stop-opacity=".20"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="82%" cy="30%" r="40%">
+      <stop offset="0" stop-color="#f59e0b" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="frame"><rect width="1280" height="440" rx="28"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="440" fill="url(#bg)"/>
+    <rect width="1280" height="440" fill="url(#glow)"/>
+    <rect width="1280" height="440" fill="url(#glow2)"/>
+
+    <!-- Ondas: el "flow" del logo, a lo ancho de la portada -->
+    <path d="M-60 372 c40 -24 80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0"
+          fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+    <path d="M0 402 c40 -24 80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0"
+          fill="none" stroke="#14b8a6" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+
+    <!-- Logo -->
+    <g transform="translate(112 92) scale(2.7)">
+      <rect x="14" y="6" width="36" height="46" rx="5" fill="#0f766e"/>
+      <path d="M40 6h5a5 5 0 0 1 5 5v5z" fill="#115e59"/>
+      <path d="M20 18h18M20 24h24M20 30h14" stroke="#ccfbf1" stroke-width="3" stroke-linecap="round"/>
+      <path d="M6 46c8-7 14 7 22 0s14 7 22 0 8-3 8-3" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+      <path d="M6 55c8-7 14 7 22 0s14 7 22 0 8-3 8-3" fill="none" stroke="#14b8a6" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- Título -->
+    <text x="330" y="196" fill="#e6efed" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="94" font-weight="600" letter-spacing="-2">PaperFlow</text>
+    <text x="334" y="246" fill="#93a4a1" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30">Del DOI al PDF, sin fricción.</text>
+
+    <!-- Chips -->
+    <g font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#2dd4bf">
+      <rect x="334" y="276" width="132" height="36" rx="18" fill="#123b37"/>
+      <text x="400" y="300" text-anchor="middle">DOI e ISBN</text>
+      <rect x="478" y="276" width="196" height="36" rx="18" fill="#123b37"/>
+      <text x="576" y="300" text-anchor="middle">13 fuentes legales</text>
+      <rect x="686" y="276" width="164" height="36" rx="18" fill="#123b37"/>
+      <text x="768" y="300" text-anchor="middle">PDF verificado</text>
+    </g>
+
+    <!-- Tarjeta de resultado (ilustración) -->
+    <g transform="translate(900 84)">
+      <rect width="300" height="232" rx="20" fill="#152120" stroke="#253534" stroke-width="2"/>
+      <rect x="22" y="22" width="168" height="28" rx="14" fill="#123b37"/>
+      <circle cx="40" cy="36" r="5" fill="#2dd4bf"/>
+      <text x="54" y="42" fill="#2dd4bf" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".6">ACCESO ABIERTO</text>
+      <rect x="22" y="70" width="244" height="13" rx="6.5" fill="#e6efed" opacity=".88"/>
+      <rect x="22" y="92" width="176" height="13" rx="6.5" fill="#e6efed" opacity=".88"/>
+      <rect x="22" y="118" width="210" height="9" rx="4.5" fill="#93a4a1" opacity=".55"/>
+      <text x="22" y="152" fill="#2dd4bf" font-family="'Cascadia Code', Consolas, 'Courier New', monospace" font-size="14" font-weight="600">DOI: 10.1056/NEJMoa2034577</text>
+      <rect x="22" y="170" width="150" height="40" rx="10" fill="#2dd4bf"/>
+      <text x="97" y="196" fill="#062a27" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Descargar PDF</text>
+    </g>
+  </g>
+</svg>

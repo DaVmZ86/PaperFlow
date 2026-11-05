@@ -138,6 +138,10 @@ body {
 }
 @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
 
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+}
+
 .status {
   display: inline-flex;
   align-items: center;
