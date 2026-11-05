@@ -542,9 +542,29 @@
       document.getElementById('noAccessResult').classList.remove('active');
 
       try {
-        const response = await fetch(`/api/search?doi=${encodeURIComponent(input)}`);
-        const data = await response.json();
-        
+        // La ruta del servidor es /api/resolve?q= (acepta DOI o ISBN)
+        const response = await fetch(`/api/resolve?q=${encodeURIComponent(input)}`);
+        const api = await response.json();
+        if (!response.ok) {
+          alert(api.detail || 'No se encontró ese DOI.');
+          return;
+        }
+
+        // Traduce la respuesta del servidor a los nombres que usa esta página
+        const authors = api.meta.authors || [];
+        const VERSION = { publishedVersion: 'versión publicada', acceptedVersion: 'manuscrito aceptado', submittedVersion: 'preprint' };
+        const data = {
+          doi: api.doi || api.isbn,
+          isOpenAccess: api.available,
+          title: api.meta.title,
+          authors: authors.length > 3 ? `${authors[0]} et al.` : authors.join(', '),
+          journal: api.meta.journal || api.meta.publisher,
+          year: api.meta.year,
+          source: api.source ? api.source.name : '',
+          version: api.source ? VERSION[api.source.version] : '',
+          pdfUrl: api.download_url,
+        };
+
         currentArticle = data;
         currentDOI = data.doi;
 
