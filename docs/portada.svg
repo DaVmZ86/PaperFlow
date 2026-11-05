@@ -21,13 +21,13 @@
     <rect width="1280" height="440" fill="url(#glow2)"/>
 
     <!-- Ondas: el "flow" del logo, a lo ancho de la portada -->
-    <path d="M-60 372 c40 -24 80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0"
+    <path d="M-60 388 c40 -24 80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0"
           fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" opacity=".85"/>
-    <path d="M0 402 c40 -24 80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0"
+    <path d="M0 416 c40 -24 80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0 s80 24 120 0"
           fill="none" stroke="#14b8a6" stroke-width="7" stroke-linecap="round" opacity=".85"/>
 
     <!-- Logo -->
-    <g transform="translate(112 92) scale(2.7)">
+    <g transform="translate(112 112) scale(2.7)">
       <rect x="14" y="6" width="36" height="46" rx="5" fill="#0f766e"/>
       <path d="M40 6h5a5 5 0 0 1 5 5v5z" fill="#115e59"/>
       <path d="M20 18h18M20 24h24M20 30h14" stroke="#ccfbf1" stroke-width="3" stroke-linecap="round"/>
@@ -36,17 +36,25 @@
     </g>
 
     <!-- Título -->
-    <text x="330" y="196" fill="#e6efed" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="94" font-weight="600" letter-spacing="-2">PaperFlow</text>
-    <text x="334" y="246" fill="#93a4a1" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30">Del DOI al PDF, sin fricción.</text>
+    <text x="330" y="172" fill="#e6efed" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="94" font-weight="600" letter-spacing="-2">PaperFlow</text>
+    <text x="334" y="220" fill="#93a4a1" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30">Del DOI al PDF, sin fricción.</text>
 
     <!-- Chips -->
     <g font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#2dd4bf">
-      <rect x="334" y="276" width="132" height="36" rx="18" fill="#123b37"/>
-      <text x="400" y="300" text-anchor="middle">DOI e ISBN</text>
-      <rect x="478" y="276" width="196" height="36" rx="18" fill="#123b37"/>
-      <text x="576" y="300" text-anchor="middle">13 fuentes legales</text>
-      <rect x="686" y="276" width="164" height="36" rx="18" fill="#123b37"/>
-      <text x="768" y="300" text-anchor="middle">PDF verificado</text>
+      <rect x="334" y="244" width="132" height="36" rx="18" fill="#123b37"/>
+      <text x="400" y="268" text-anchor="middle">DOI e ISBN</text>
+      <rect x="478" y="244" width="196" height="36" rx="18" fill="#123b37"/>
+      <text x="576" y="268" text-anchor="middle">13 fuentes legales</text>
+      <rect x="686" y="244" width="164" height="36" rx="18" fill="#123b37"/>
+      <text x="768" y="268" text-anchor="middle">PDF verificado</text>
+    </g>
+
+    <!-- Botón: Entrar a la aplicación (la portada completa enlaza a la app en el README) -->
+    <g font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+      <rect x="334" y="298" width="300" height="50" rx="14" fill="#2dd4bf"/>
+      <text x="360" y="330" fill="#062a27" font-size="19" font-weight="700">Entrar a la aplicación</text>
+      <path d="M592 323h20m-8-8 8 8-8 8" fill="none" stroke="#062a27" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="650" y="330" fill="#93a4a1" font-size="16">paper-flow-chi.vercel.app</text>
     </g>
 
     <!-- Tarjeta de resultado (ilustración) -->

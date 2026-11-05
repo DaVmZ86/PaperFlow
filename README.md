@@ -1,5 +1,13 @@
 <p align="center">
-  <img src="docs/portada.svg" alt="PaperFlow — Del DOI al PDF, sin fricción" width="100%">
+  <a href="https://paper-flow-chi.vercel.app/" title="Entrar a la aplicación">
+    <img src="docs/portada.svg" alt="PaperFlow — Del DOI al PDF, sin fricción" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://paper-flow-chi.vercel.app/">
+    <img src="https://img.shields.io/badge/%E2%96%B6%20Entrar%20a%20la%20aplicaci%C3%B3n-paper--flow--chi.vercel.app-2dd4bf?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0f766e" alt="Entrar a la aplicación" height="36">
+  </a>
 </p>
 
 <p align="center">
@@ -108,6 +116,8 @@ Edita `.env`, escribe tu correo en `PAPERFLOW_EMAIL` y arranca:
 ```
 
 Abre **http://localhost:8000** 🎉
+
+> 🌐 ¿Solo quieres usarla? Está disponible en línea en **[paper-flow-chi.vercel.app](https://paper-flow-chi.vercel.app/)**, sin instalar nada.
 
 > [!TIP]
 > Puedes compartir búsquedas con un enlace directo: `http://localhost:8000/?q=10.1001/jama.2016.0287` o `?q=9780674637528`.
