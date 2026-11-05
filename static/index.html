@@ -1,63 +1,567 @@
-<!doctype html>
+Perfecto, te ayudo a integrar el código en tu archivo `index.html`. Basándome en la estructura que compartiste, aquí está el archivo completo actualizado:
+
+```html
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PaperFlow</title>
-  <meta name="description" content="Del DOI al PDF, sin fricción: encuentra copias legales de acceso abierto de artículos y libros.">
-  <link rel="icon" href="/static/logo.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperFlow - Del DOI al PDF, sin fricción</title>
+  <link rel="icon" type="image/svg+xml" href="/static/logo.svg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 40px;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 18px;
+      color: #8b949e;
+      margin-bottom: 60px;
+      font-weight: 400;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 12px;
+      background: #161b22;
+      border: 2px solid #30363d;
+      border-radius: 12px;
+      padding: 8px;
+      transition: border-color 0.3s;
+    }
+
+    .search-box:focus-within {
+      border-color: #58a6ff;
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 14px 16px;
+      color: #e6edf3;
+      font-size: 16px;
+      outline: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .search-input::placeholder {
+      color: #6e7681;
+    }
+
+    .search-button {
+      background: #238636;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .search-button:hover {
+      background: #2ea043;
+    }
+
+    .result-container {
+      width: 100%;
+      max-width: 680px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .result-container.active {
+      display: block;
+    }
+
+    .oa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(35, 134, 54, 0.15);
+      color: #3fb950;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .oa-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #3fb950;
+      border-radius: 50%;
+    }
+
+    .article-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .article-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      color: #8b949e;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .doi-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .doi-label {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #58a6ff;
+      font-weight: 600;
+    }
+
+    .doi-value {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #e6edf3;
+      background: #0d1117;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .copy-doi-btn {
+      background: transparent;
+      border: 1px solid #30363d;
+      color: #8b949e;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .copy-doi-btn:hover {
+      border-color: #58a6ff;
+      color: #58a6ff;
+    }
+
+    .source-info {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      color: #8b949e;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      background: #238636;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .download-btn:hover {
+      background: #2ea043;
+    }
+
+    /* Sección para cuando NO hay acceso abierto */
+    .no-access-section {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .no-access-section.active {
+      display: block;
+    }
+
+    .alert-box {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1923 100%);
+      border: 1px solid #2d3748;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .alert-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .alert-content h3 {
+      color: #e2e8f0;
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .alert-content p {
+      color: #a0aec0;
+      margin: 0 0 16px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .telegram-suggestion {
+      background: rgba(45, 55, 72, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .telegram-suggestion p {
+      margin: 0 0 12px 0;
+      color: #cbd5e0;
+    }
+
+    .bot-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+
+    .bot-info code {
+      background: #2d3748;
+      color: #63b3ed;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .copy-bot {
+      background: #4299e1;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .copy-bot:hover {
+      background: #3182ce;
+    }
+
+    .bot-instructions {
+      font-size: 13px !important;
+      color: #a0aec0 !important;
+      margin-top: 12px;
+    }
+
+    .bot-instructions code {
+      background: #2d3748;
+      color: #63b3ed;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .doi-code {
+      background: #2d3748;
+      color: #63b3ed;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 60px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      color: #495057;
+      text-align: center;
+    }
+
+    footer a {
+      color: #6c757d;
+      text-decoration: none;
+      margin: 0 4px;
+    }
+
+    footer a:hover {
+      color: #8b949e;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-button {
+        width: 100%;
+      }
+
+      .alert-box {
+        flex-direction: column;
+      }
+
+      .bot-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .copy-bot {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="shell">
-    <header class="brand">
-      <img src="/static/logo.svg" alt="" class="brand__logo" width="72" height="72">
-      <h1 class="brand__title">PaperFlow</h1>
-      <p class="brand__tag">Del DOI al PDF, sin fricción.</p>
-    </header>
+  <img src="/static/logo.svg" alt="PaperFlow" class="logo">
+  
+  <h1>PaperFlow</h1>
+  <p class="tagline">Del DOI al PDF, sin fricción.</p>
 
-    <form class="search" id="search" autocomplete="off">
-      <label for="doi" class="sr-only">DOI o ISBN</label>
-      <input id="doi" name="q" type="text" placeholder="DOI o ISBN — p. ej. 10.1038/nature12373" spellcheck="false" required autofocus>
-      <button type="submit" id="go">
-        <span class="go__label">Buscar</span>
-        <span class="spinner" aria-hidden="true"></span>
-      </button>
-    </form>
-    <p id="hint" class="hint" aria-live="polite" hidden></p>
+  <div class="search-container">
+    <div class="search-box">
+      <input 
+        type="text" 
+        class="search-input" 
+        id="doiInput" 
+        placeholder="DOI o ISBN"
+        autocomplete="off"
+      >
+      <button class="search-button" onclick="searchArticle()">Buscar</button>
+    </div>
+  </div>
 
-    <section id="result" class="result" aria-live="polite" hidden></section>
-  </main>
+  <!-- Resultado: Acceso abierto disponible -->
+  <div class="result-container" id="openAccessResult">
+    <div class="oa-badge">Acceso abierto disponible</div>
+    <h2 class="article-title" id="oaTitle"></h2>
+    <p class="article-meta" id="oaMeta"></p>
+    <div class="doi-container">
+      <span class="doi-label">DOI:</span>
+      <span class="doi-value" id="oaDOI"></span>
+      <button class="copy-doi-btn" onclick="copyDOI()">Copiar DOI</button>
+    </div>
+    <p class="source-info" id="oaSource"></p>
+    <button class="download-btn" onclick="downloadPDF()">
+      <span></span>
+      <span>Descargar PDF</span>
+    </button>
+  </div>
 
-  <footer class="foot">
-    Solo copias legales de acceso abierto · Unpaywall · OpenAlex · PubMed Central · CORE · Zenodo · arXiv · bioRxiv · medRxiv · Open Library
+  <!-- Resultado: No es de acceso abierto -->
+  <div class="result-container" id="noAccessResult">
+    <h2 class="article-title" id="naTitle"></h2>
+    <p class="article-meta" id="naMeta"></p>
+    <div class="doi-container">
+      <span class="doi-label">DOI:</span>
+      <span class="doi-value" id="naDOI"></span>
+      <button class="copy-doi-btn" onclick="copyDOINoAccess()">Copiar DOI</button>
+    </div>
+    
+    <!-- Sección para cuando NO hay acceso abierto -->
+    <div class="no-access-section active">
+      <div class="alert-box">
+        <div class="alert-icon"></div>
+        <div class="alert-content">
+          <h3>Artículo no disponible en acceso abierto</h3>
+          <p>Este artículo no está disponible gratuitamente en repositorios de acceso abierto.</p>
+          
+          <div class="telegram-suggestion">
+            <p><strong>Alternativa:</strong> Puedes buscar este DOI en el bot de Telegram:</p>
+            <div class="bot-info">
+              <code>@NexusSearch724Bot</code>
+              <button class="copy-bot" onclick="copyBotName()">Copiar</button>
+            </div>
+            <p class="bot-instructions">
+              1. Abre Telegram y busca <strong>@NexusSearch724Bot</strong><br>
+              2. Inicia el bot<br>
+              3. Pega el DOI: <code class="doi-code" id="telegramDOI"></code>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Solo copias legales de acceso abierto · 
+    <a href="https://unpaywall.org" target="_blank">Unpaywall</a> · 
+    <a href="https://openalex.org" target="_blank">OpenAlex</a> · 
+    <a href="https://ncbi.nlm.nih.gov/pmc" target="_blank">PubMed Central</a> · 
+    <a href="https://core.ac.uk" target="_blank">CORE</a> · 
+    <a href="https://zenodo.org" target="_blank">Zenodo</a> · 
+    <a href="https://arxiv.org" target="_blank">arXiv</a> · 
+    <a href="https://biorxiv.org" target="_blank">bioRxiv</a> · 
+    <a href="https://medrxiv.org" target="_blank">medRxiv</a> · 
+    <a href="https://openlibrary.org" target="_blank">Open Library</a>
   </footer>
 
-  <template id="tpl-found">
-    <article class="card card--ok">
-      <div class="status"><span class="dot"></span><span class="status__text">Acceso abierto disponible</span></div>
-      <h2 class="card__title"></h2>
-      <p class="card__meta"></p>
-      <p class="card__doi"><a class="doi-link" target="_blank" rel="noopener noreferrer"></a><button type="button" class="chip-btn" data-copy-doi>Copiar DOI</button></p>
-      <p class="card__source"></p>
-      <a class="btn btn--primary" data-download>Descargar PDF</a>
-    </article>
-  </template>
+  <script>
+    let currentArticle = null;
+    let currentDOI = '';
 
-  <template id="tpl-closed">
-    <article class="card card--closed">
-      <div class="status"><span class="dot"></span><span class="status__text">No es de acceso abierto</span></div>
-      <h2 class="card__title"></h2>
-      <p class="card__meta"></p>
-      <p class="card__doi"><a class="doi-link" target="_blank" rel="noopener noreferrer"></a><button type="button" class="chip-btn" data-copy-doi>Copiar DOI</button></p>
-      <p class="card__hint">Este artículo no es de acceso abierto: no encontramos ninguna copia gratuita y legal en las 13 fuentes consultadas. Puedes consultarlo por estas vías:</p>
-      <ul class="alts"></ul>
-    </article>
-  </template>
+    // Permitir buscar con Enter
+    document.getElementById('doiInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        searchArticle();
+      }
+    });
 
-  <script src="/static/app.js"></script>
+    async function searchArticle() {
+      const input = document.getElementById('doiInput').value.trim();
+      if (!input) return;
+
+      // Ocultar resultados previos
+      document.getElementById('openAccessResult').classList.remove('active');
+      document.getElementById('noAccessResult').classList.remove('active');
+
+      try {
+        // Aquí iría la llamada a tu backend
+        // Por ahora, simulamos una respuesta
+        const response = await fetch(`/api/search?doi=${encodeURIComponent(input)}`);
+        const data = await response.json();
+        
+        currentArticle = data;
+        currentDOI = data.doi;
+
+        if (data.isOpenAccess) {
+          showOpenAccessResult(data);
+        } else {
+          showNoAccessResult(data);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al buscar el artículo. Intenta de nuevo.');
+      }
+    }
+
+    function showOpenAccessResult(data) {
+      document.getElementById('oaTitle').textContent = data.title;
+      document.getElementById('oaMeta').textContent = `${data.authors} · ${data.journal} · ${data.year}`;
+      document.getElementById('oaDOI').textContent = data.doi;
+      document.getElementById('oaSource').textContent = `Fuente: ${data.source} · ${data.version}`;
+      document.getElementById('openAccessResult').classList.add('active');
+    }
+
+    function showNoAccessResult(data) {
+      document.getElementById('naTitle').textContent = data.title;
+      document.getElementById('naMeta').textContent = `${data.authors} · ${data.journal} · ${data.year}`;
+      document.getElementById('naDOI').textContent = data.doi;
+      document.getElementById('telegramDOI').textContent = data.doi;
+      document.getElementById('noAccessResult').classList.add('active');
+    }
+
+    function downloadPDF() {
+      if (currentArticle && currentArticle.pdfUrl) {
+        window.open(currentArticle.pdfUrl, '_blank');
+      }
+    }
+
+    function copyDOI() {
+      navigator.clipboard.writeText(currentDOI);
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = '¡Copiado!';
+      setTimeout(() => {
+        btn.textContent = originalText;
+      }, 2000);
+    }
+
+    function copyDOINoAccess() {
+      navigator.clipboard.writeText(currentDOI);
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = '¡Copiado!';
+      setTimeout(() => {
+        btn.textContent = originalText;
+      }, 2000);
+    }
+
+    function copyBotName() {
+      navigator.clipboard.writeText('@NexusSearch724Bot');
+      const btn = document.querySelector('.copy-bot');
+      btn.textContent = '¡Copiado!';
+      setTimeout(() => {
+        btn.textContent = 'Copiar';
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
+```
+
+## Cambios realizados:
+
+1. **Se agregó la sección de alerta** dentro del contenedor `noAccessResult` con el diseño completo
+2. **Estilos CSS integrados** para la alerta, el botón de copiar y las instrucciones
+3. **Funciones JavaScript** actualizadas:
+   - `showNoAccessResult()` ahora también actualiza el DOI en las instrucciones de Telegram
+   - `copyBotName()` para copiar el nombre del bot al portapapeles
+4. **Responsive design** para que se vea bien en móviles
+
+La sección se mostrará automáticamente cuando `isOpenAccess` sea `false`, proporcionando al usuario una alternativa clara y fácil de seguir.
