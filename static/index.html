@@ -220,110 +220,135 @@
       background: #2ea043;
     }
 
-    /* Sección para cuando NO hay acceso abierto */
+    /* Sección de alerta mejorada */
     .no-access-section {
-      margin-top: 20px;
-      display: none;
-    }
-
-    .no-access-section.active {
-      display: block;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #30363d;
     }
 
     .alert-box {
       background: linear-gradient(135deg, #1a2332 0%, #0f1923 100%);
-      border: 1px solid #2d3748;
+      border: 1px solid #30363d;
       border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      gap: 16px;
-    }
-
-    .alert-icon {
-      font-size: 32px;
-      flex-shrink: 0;
+      padding: 28px;
     }
 
     .alert-content h3 {
-      color: #e2e8f0;
-      margin: 0 0 8px 0;
-      font-size: 18px;
+      color: #f0f6fc;
+      margin: 0 0 12px 0;
+      font-size: 20px;
       font-weight: 600;
+      letter-spacing: -0.3px;
     }
 
-    .alert-content p {
-      color: #a0aec0;
-      margin: 0 0 16px 0;
-      font-size: 14px;
-      line-height: 1.5;
+    .alert-content > p {
+      color: #8b949e;
+      margin: 0 0 20px 0;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     .telegram-suggestion {
-      background: rgba(45, 55, 72, 0.3);
-      border-radius: 8px;
-      padding: 16px;
+      background: rgba(22, 27, 34, 0.6);
+      border: 1px solid #21262d;
+      border-radius: 10px;
+      padding: 20px;
       margin-top: 16px;
     }
 
-    .telegram-suggestion p {
-      margin: 0 0 12px 0;
-      color: #cbd5e0;
+    .telegram-suggestion > p {
+      margin: 0 0 16px 0;
+      color: #c9d1d9;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .telegram-suggestion strong {
+      color: #58a6ff;
+      font-weight: 600;
     }
 
     .bot-info {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 12px 0;
+      margin: 16px 0;
       flex-wrap: wrap;
     }
 
     .bot-info code {
-      background: #2d3748;
-      color: #63b3ed;
-      padding: 8px 16px;
-      border-radius: 6px;
+      background: linear-gradient(135deg, rgba(31, 111, 235, 0.1), rgba(35, 134, 54, 0.1));
+      border: 1px solid #238636;
+      color: #3fb950;
+      padding: 10px 16px;
+      border-radius: 8px;
       font-family: 'Courier New', monospace;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
+      letter-spacing: 0.3px;
     }
 
     .copy-bot {
-      background: #4299e1;
+      background: #238636;
       color: white;
       border: none;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
-      transition: background 0.2s;
+      font-weight: 600;
+      transition: all 0.2s;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     .copy-bot:hover {
-      background: #3182ce;
+      background: #2ea043;
+      transform: translateY(-1px);
+    }
+
+    .copy-bot:active {
+      transform: translateY(0);
     }
 
     .bot-instructions {
-      font-size: 13px !important;
-      color: #a0aec0 !important;
-      margin-top: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #21262d;
+    }
+
+    .bot-instructions p {
+      color: #8b949e !important;
+      font-size: 14px !important;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .bot-instructions strong {
+      color: #c9d1d9;
+      font-weight: 600;
     }
 
     .bot-instructions code {
-      background: #2d3748;
-      color: #63b3ed;
-      padding: 2px 6px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #58a6ff;
+      padding: 3px 8px;
       border-radius: 4px;
       font-family: 'Courier New', monospace;
+      font-size: 13px;
     }
 
     .doi-code {
-      background: #2d3748;
-      color: #63b3ed;
-      padding: 2px 6px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #58a6ff;
+      padding: 3px 8px;
       border-radius: 4px;
       font-family: 'Courier New', monospace;
+      font-size: 13px;
+      display: inline-block;
+      margin-top: 4px;
     }
 
     footer {
@@ -357,10 +382,6 @@
 
       .search-button {
         width: 100%;
-      }
-
-      .alert-box {
-        flex-direction: column;
       }
 
       .bot-info {
@@ -405,7 +426,6 @@
     </div>
     <p class="source-info" id="oaSource"></p>
     <button class="download-btn" onclick="downloadPDF()">
-      <span></span>
       <span>Descargar PDF</span>
     </button>
   </div>
@@ -420,10 +440,9 @@
       <button class="copy-doi-btn" onclick="copyDOINoAccess()">Copiar DOI</button>
     </div>
     
-    <!-- Sección para cuando NO hay acceso abierto -->
-    <div class="no-access-section active">
+    <!-- Sección de alerta mejorada -->
+    <div class="no-access-section">
       <div class="alert-box">
-        <div class="alert-icon"></div>
         <div class="alert-content">
           <h3>Artículo no disponible en acceso abierto</h3>
           <p>Este artículo no está disponible gratuitamente en repositorios de acceso abierto.</p>
@@ -434,11 +453,13 @@
               <code>@NexusSearch724Bot</code>
               <button class="copy-bot" onclick="copyBotName()">Copiar</button>
             </div>
-            <p class="bot-instructions">
-              1. Abre Telegram y busca <strong>@NexusSearch724Bot</strong><br>
-              2. Inicia el bot<br>
-              3. Pega el DOI: <code class="doi-code" id="telegramDOI"></code>
-            </p>
+            <div class="bot-instructions">
+              <p>
+                1. Abre Telegram y busca <strong>@NexusSearch724Bot</strong><br>
+                2. Inicia el bot<br>
+                3. Pega el DOI: <span class="doi-code" id="telegramDOI"></span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -498,19 +519,27 @@
     }
 
     function showOpenAccessResult(data) {
-      document.getElementById('oaTitle').textContent = data.title;
-      document.getElementById('oaMeta').textContent = `${data.authors} · ${data.journal} · ${data.year}`;
-      document.getElementById('oaDOI').textContent = data.doi;
-      document.getElementById('oaSource').textContent = `Fuente: ${data.source} · ${data.version}`;
+      document.getElementById('oaTitle').textContent = data.title || 'Título no disponible';
+      document.getElementById('oaMeta').textContent = formatMetadata(data);
+      document.getElementById('oaDOI').textContent = data.doi || '';
+      document.getElementById('oaSource').textContent = `Fuente: ${data.source || 'Desconocida'} · ${data.version || 'versión publicada'}`;
       document.getElementById('openAccessResult').classList.add('active');
     }
 
     function showNoAccessResult(data) {
-      document.getElementById('naTitle').textContent = data.title;
-      document.getElementById('naMeta').textContent = `${data.authors} · ${data.journal} · ${data.year}`;
-      document.getElementById('naDOI').textContent = data.doi;
-      document.getElementById('telegramDOI').textContent = data.doi;
+      document.getElementById('naTitle').textContent = data.title || 'Título no disponible';
+      document.getElementById('naMeta').textContent = formatMetadata(data);
+      document.getElementById('naDOI').textContent = data.doi || '';
+      document.getElementById('telegramDOI').textContent = data.doi || '';
       document.getElementById('noAccessResult').classList.add('active');
+    }
+
+    function formatMetadata(data) {
+      const parts = [];
+      if (data.authors) parts.push(data.authors);
+      if (data.journal) parts.push(data.journal);
+      if (data.year) parts.push(data.year);
+      return parts.length > 0 ? parts.join(' · ') : 'Información no disponible';
     }
 
     function downloadPDF() {
@@ -550,4 +579,3 @@
   </script>
 </body>
 </html>
-
