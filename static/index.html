@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PaperFlow</title>
+  <meta name="description" content="Del DOI al PDF, sin fricción: encuentra copias legales de acceso abierto de artículos y libros.">
+  <link rel="icon" href="/static/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <img src="/static/logo.svg" alt="" class="brand__logo" width="72" height="72">
+      <h1 class="brand__title">PaperFlow</h1>
+      <p class="brand__tag">Del DOI al PDF, sin fricción.</p>
+    </header>
+
+    <form class="search" id="search" autocomplete="off">
+      <label for="doi" class="sr-only">DOI o ISBN</label>
+      <input id="doi" name="q" type="text" placeholder="DOI o ISBN — p. ej. 10.1038/nature12373" spellcheck="false" required autofocus>
+      <button type="submit" id="go">
+        <span class="go__label">Buscar</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+    <p id="hint" class="hint" aria-live="polite" hidden></p>
+
+    <section id="result" class="result" aria-live="polite" hidden></section>
+  </main>
+
+  <footer class="foot">
+    Solo copias legales de acceso abierto · Unpaywall · OpenAlex · PubMed Central · CORE · Zenodo · arXiv · bioRxiv · medRxiv · Open Library
+  </footer>
+
+  <template id="tpl-found">
+    <article class="card card--ok">
+      <div class="status"><span class="dot"></span><span class="status__text">Acceso abierto disponible</span></div>
+      <h2 class="card__title"></h2>
+      <p class="card__meta"></p>
+      <p class="card__doi"><a class="doi-link" target="_blank" rel="noopener noreferrer"></a><button type="button" class="chip-btn" data-copy-doi>Copiar DOI</button></p>
+      <p class="card__source"></p>
+      <a class="btn btn--primary" data-download>Descargar PDF</a>
+    </article>
+  </template>
+
+  <template id="tpl-closed">
+    <article class="card card--closed">
+      <div class="status"><span class="dot"></span><span class="status__text">No es de acceso abierto</span></div>
+      <h2 class="card__title"></h2>
+      <p class="card__meta"></p>
+      <p class="card__doi"><a class="doi-link" target="_blank" rel="noopener noreferrer"></a><button type="button" class="chip-btn" data-copy-doi>Copiar DOI</button></p>
+      <p class="card__hint">Este artículo no es de acceso abierto: no encontramos ninguna copia gratuita y legal en las 13 fuentes consultadas. Puedes consultarlo por estas vías:</p>
+      <ul class="alts"></ul>
+    </article>
+  </template>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
